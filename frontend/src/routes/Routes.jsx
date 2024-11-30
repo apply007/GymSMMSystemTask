@@ -1,10 +1,11 @@
 import React from "react";
-import { BrowserRouter, Route,Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
-import Login from "../pages/authentication/Login";
+
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import TrainerDashboard from "../pages/trainer/TrainerDashboard";
 import Register from "../pages/authentication/Register";
+import Login from "../pages/authentication/Login";
 
 const RoutesData = () => {
   return (

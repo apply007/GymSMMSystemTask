@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 
 import { loginUser } from "../../Redux/auth/authSlice";
 import Spinner from "../../components/Spinner";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
+  const { user,loading, error } = useSelector((state) => state.auth);
+console.log(user.user)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,6 +25,20 @@ const Login = () => {
     e.preventDefault();
     dispatch(loginUser(formData));
   };
+
+// Redirect based on role after successful login
+useEffect(() => {
+  if (user) {
+    const { role } = user.user; // Assuming `role` is part of the user object
+    if (role === "admin") {
+      navigate("/admin-dashboard");
+    } else if (role === "trainer") {
+      navigate("/trainer-dashboard");
+    } else {
+      navigate("/"); // Default redirect (e.g., homepage)
+    }
+  }
+}, [user, navigate]);
 
   return (
     <div className="flex justify-center items-center h-screen bg-gray-100">
