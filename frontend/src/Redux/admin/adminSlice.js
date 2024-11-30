@@ -32,10 +32,11 @@ export const addTrainer = createAsyncThunk(
       const { token } = JSON.parse(localStorage.getItem("user")); // Get token from localStorage
       const response = await axios.post(`${BACKEND_URL}/trainers`, trainer, {
         headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+          // "Content-Type": "application/json",
         },
       });
+      console.log(response)
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Error adding trainer");
