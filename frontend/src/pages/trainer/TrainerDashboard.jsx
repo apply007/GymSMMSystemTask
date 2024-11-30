@@ -7,7 +7,7 @@ const TrainerDashboard = () => {
   const { trainers, loading, error } = useSelector((state) => state.trainers);
 
   const { user } = useSelector((state) => state.auth);
-console.log(user.user.role)
+  console.log(user.user.role);
 
   const [newTrainer, setNewTrainer] = useState({
     fullName: "",
@@ -48,19 +48,18 @@ console.log(user.user.role)
 
       {/* Trainers List */}
       <div className="mb-6">
-        <h2 className="text-xl font-semibold mb-2">Trainer List</h2>
-        <ul className="pl-5 list-none">
+        <h2 className="text-xl font-semibold mb-2 underline">Trainer List</h2>
+        <ul className="pl-5 list-none ">
           {trainers.map((trainer) => (
             <li key={trainer.id} className="mb-1">
-              <span className="font-medium">{trainer.fullName}</span> -{" "}
-              {trainer.fullName} ({trainer.expertise})
+              <span className="font-medium">{trainer.fullName}</span>{" "}
             </li>
           ))}
         </ul>
       </div>
 
       {/* Add Trainer Form */}
-      {user.user.role==='admin' &&
+      {user.user.role === "admin" && (
         <div>
           <h2 className="text-xl font-semibold mb-2">Add New Trainer</h2>
           <form onSubmit={handleAddTrainer} className="space-y-4">
@@ -114,7 +113,7 @@ console.log(user.user.role)
             </button>
           </form>
         </div>
-      }
+      )}
     </div>
   );
 };

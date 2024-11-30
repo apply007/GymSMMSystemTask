@@ -16,7 +16,7 @@ const register = async (req, res) => {
       fullName,
       email,
       password: hashedPassword,
-      role,
+      role:"trainer",
     });
     await newUser.save();
 

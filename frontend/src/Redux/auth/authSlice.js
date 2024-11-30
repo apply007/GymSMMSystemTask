@@ -30,6 +30,7 @@ const authSlice = createSlice({
     user: JSON.parse(localStorage.getItem("user")) || null,
     loading: false,
     error: null,
+    success:false
   },
   reducers: {
     logout(state) {
@@ -57,6 +58,7 @@ const authSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state) => {
         state.loading = false;
+        state.success=true
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.error = action.payload;
