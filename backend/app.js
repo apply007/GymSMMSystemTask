@@ -1,5 +1,6 @@
 const express = require("express");
 const authRoutes = require("./routes/authRoutes");
+const trainerRoutes = require("./routes/trainerRoutes");
 const  cors = require("cors");
 const app = express();
 // Configure CORS
@@ -10,4 +11,5 @@ app.use(cors({
   }));
 app.use(express.json());
 app.use('/api/auth', authRoutes);
+app.use('/api/trainers', trainerRoutes);
 module.exports = app;

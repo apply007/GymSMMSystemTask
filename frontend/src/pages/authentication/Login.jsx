@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const { user,loading, error } = useSelector((state) => state.auth);
-console.log(user.user)
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
