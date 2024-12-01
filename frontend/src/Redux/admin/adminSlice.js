@@ -32,11 +32,11 @@ export const addTrainer = createAsyncThunk(
       const { token } = JSON.parse(localStorage.getItem("user")); // Get token from localStorage
       const response = await axios.post(`${BACKEND_URL}/trainers`, trainer, {
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
           // "Content-Type": "application/json",
         },
       });
-      console.log(response)
+      console.log(response);
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Error adding trainer");
@@ -50,7 +50,7 @@ export const deleteTrainer = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { token } = JSON.parse(localStorage.getItem("user"));
-      await axios.delete(`${BACKEND_URL}/trainers/${id}`,{
+      await axios.delete(`${BACKEND_URL}/trainers/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Pass token in headers
         },
@@ -64,10 +64,13 @@ export const deleteTrainer = createAsyncThunk(
 
 // Async thunk for fetching class schedules
 export const fetchClassSchedules = createAsyncThunk(
-  "admin/fetchClassSchedules",
+  "fetchClassSchedules",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/class-schedules`);
+      const { token } = JSON.parse(localStorage.getItem("user")); // Get token from localStorage
+      const response = await axios.get(`${BACKEND_URL}/schedules`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       return response.data;
     } catch (error) {
       return rejectWithValue(
@@ -79,16 +82,17 @@ export const fetchClassSchedules = createAsyncThunk(
 
 // Async thunk for adding a class schedule
 export const addClassSchedule = createAsyncThunk(
-  "admin/addClassSchedule",
+  "addClassSchedule",
   async (schedule, { rejectWithValue }) => {
     try {
-      const response = await axios.post(
-        `${BACKEND_URL}/class-schedules`,
-        schedule,
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+         const { token } = JSON.parse(localStorage.getItem("user")); // Get token from localStorage
+         console.log(token)
+      const response = await axios.post(`${BACKEND_URL}/schedules`, schedule, {
+     
+          headers: { Authorization: `Bearer ${token}` }
+        
+     
+      });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Error adding schedule");

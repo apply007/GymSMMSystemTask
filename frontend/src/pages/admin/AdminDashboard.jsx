@@ -16,13 +16,14 @@ const AdminDashboard = () => {
   const [classData, setClassData] = useState({
     date: "",
     time: "",
-    trainerId: "",
+    trainer: "",
   });
 
   // Redux state
   const { trainers, classSchedules, loading, error } = useSelector(
     (state) => state.trainers
   );
+  console.log(classSchedules)
 
   // Fetch trainers and schedules on component mount
   useEffect(() => {
@@ -48,9 +49,9 @@ e.preventDefault()
 
   // Add new class schedule
   const handleAddClassSchedule = () => {
-    if (classData.date && classData.time && classData.trainerId) {
+    if (classData.date && classData.time && classData.trainer) {
       dispatch(addClassSchedule(classData));
-      setClassData({ date: "", time: "", trainerId: "" }); // Reset form
+      setClassData({ date: "", time: "", trainer: "" }); // Reset form
     }
   };
 
@@ -113,16 +114,16 @@ e.preventDefault()
             className="p-2 border rounded mr-2"
           />
           <select
-            value={classData.trainerId}
+            value={classData.trainer}
             onChange={(e) =>
-              setClassData({ ...classData, trainerId: e.target.value })
+              setClassData({ ...classData, trainer: e.target.value })
             }
             className="p-2 border rounded mr-2"
           >
             <option value="">Select Trainer</option>
             {trainers.map((trainer) => (
-              <option key={trainer.id} value={trainer.id}>
-                {trainer.name}
+              <option key={trainer._id} value={trainer._id}>
+                {trainer.fullName}
               </option>
             ))}
           </select>
@@ -146,11 +147,12 @@ e.preventDefault()
             </thead>
             <tbody>
               {classSchedules.map((schedule) => (
-                <tr key={schedule.id}>
+           
+                <tr key={schedule._id}>
                   <td className="border border-gray-300 p-2">{schedule.date}</td>
                   <td className="border border-gray-300 p-2">{schedule.time}</td>
                   <td className="border border-gray-300 p-2">
-                    {trainers.find((t) => t.id === schedule.trainerId)?.name}
+                    {trainers.find((t) => t._id === schedule.trainer)?.name}
                   </td>
                 </tr>
               ))}
