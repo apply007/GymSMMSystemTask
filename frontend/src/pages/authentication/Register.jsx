@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../Redux/auth/authSlice";
 import Spinner from "../../components/Spinner";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const dispatch = useDispatch();
   const { loading, error, success } = useSelector((state) => state.auth);
+  
 
   const [formData, setFormData] = useState({
     fullName: "",
@@ -23,6 +25,7 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(registerUser(formData));
+  
   };
 
   return (
@@ -30,8 +33,8 @@ const Register = () => {
       <div className="w-full max-w-md p-8 bg-white rounded shadow-md">
         <h2 className="text-2xl font-bold text-center mb-4">Register</h2>
         {loading && <Spinner />}
-        {error && <div className="text-red-500 mb-2">{error}</div>}
-        {success && (
+        {error && <div className="text-red-500 mb-2">{error.message}</div>}
+        {success && !error &&(
           <div className="text-green-500 mb-2">
             Registration successful! You can now log in.
           </div>
@@ -85,6 +88,8 @@ const Register = () => {
           >
             Register
           </button>
+
+        <div>  <Link className="w-full px-1 py-2  text-white bg-green-500 rounded-md hover:bg-green-600" to={'/'}>Go to Home</Link></div>
         </form>
       </div>
     </div>
