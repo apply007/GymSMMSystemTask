@@ -10,7 +10,7 @@ const app = require("./app");
 
 
 
-const port = process.env.PORT_NUMBER || 3000;
+const port = process.env.PORT || 5000;
 app.get('*',(req,res)=>{
   res.sendFile(path.join(__dirname,'frontend','dist','index.html'))
 })
