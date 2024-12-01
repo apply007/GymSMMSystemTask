@@ -46,10 +46,15 @@ export const addTrainer = createAsyncThunk(
 
 // Async thunk for deleting a trainer
 export const deleteTrainer = createAsyncThunk(
-  "admin/deleteTrainer",
+  "deleteTrainer",
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete(`${BACKEND_URL}/trainers/${id}`);
+      const { token } = JSON.parse(localStorage.getItem("user"));
+      await axios.delete(`${BACKEND_URL}/trainers/${id}`,{
+        headers: {
+          Authorization: `Bearer ${token}`, // Pass token in headers
+        },
+      });
       return id;
     } catch (error) {
       return rejectWithValue(error.response?.data || "Error deleting trainer");

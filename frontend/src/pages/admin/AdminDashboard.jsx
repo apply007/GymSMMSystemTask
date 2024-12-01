@@ -12,7 +12,7 @@ const AdminDashboard = () => {
   const dispatch = useDispatch();
 
   // State for form inputs
-  const [trainerName, setTrainerName] = useState("");
+  // const [trainerName, setTrainerName] = useState("");
   const [classData, setClassData] = useState({
     date: "",
     time: "",
@@ -31,16 +31,16 @@ const AdminDashboard = () => {
   }, [dispatch]);
 
   // Add new trainer
-  const handleAddTrainer = () => {
-    if (trainerName) {
-      dispatch(addTrainer({ fullName: trainerName }));
-      setTrainerName(""); // Clear input field
-    }
-  };
+  // const handleAddTrainer = () => {
+  //   if (trainerName) {
+  //     dispatch(addTrainer({ fullName: trainerName }));
+  //     setTrainerName(""); // Clear input field
+  //   }
+  // };
 
   // Delete trainer
-  const handleDeleteTrainer = (e,id) => {
-  e.preventDefault()
+  const handleDeleteTrainer = (id) => {
+console.log(id)
     dispatch(deleteTrainer(id));
   };
 
@@ -59,7 +59,7 @@ const AdminDashboard = () => {
       {/* Manage Trainers */}
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">Manage Trainers</h2>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <input
             type="text"
             placeholder="Trainer Name"
@@ -74,16 +74,16 @@ const AdminDashboard = () => {
           >
             Add Trainer
           </button>
-        </div>
+        </div> */}
         {loading ? (
           <p>Loading trainers...</p>
         ) : (
           <ul className=" list-item ml-6">
             {trainers.map((trainer) => (
-              <li key={trainer.id} className="mb-2 font-semibold">
+              <li key={trainer._id} className="mb-2 font-semibold">
                 {trainer.fullName}{" "}
                 <button
-                  onClick={() => handleDeleteTrainer(trainer.id)}
+                  onClick={() => handleDeleteTrainer(trainer._id)}
                   className="text-red-500 ml-2"
                 >
                   Delete

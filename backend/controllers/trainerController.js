@@ -33,4 +33,39 @@ const addTrainer = async (req, res) => {
   }
 };
 
-module.exports = { getTrainers, addTrainer };
+
+// Delete Trainer Controller
+const deleteTrainer = async (req, res) => {
+  const { id } = req.params; // Extract trainer ID from the route parameter
+console.log(id)
+  try {
+    // Find and delete the trainer
+    const deletedTrainer = await User.findByIdAndDelete(id);
+
+    if (!deletedTrainer) {
+      return res.status(404).json({
+        success: false,
+        message: 'Trainer not found',
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: 'Trainer deleted successfully',
+      data: deletedTrainer,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'An error occurred while deleting the trainer',
+      error: error.message,
+    });
+  }
+};
+
+module.exports = {
+  deleteTrainer,
+};
+
+
+module.exports = { getTrainers, addTrainer,deleteTrainer };
