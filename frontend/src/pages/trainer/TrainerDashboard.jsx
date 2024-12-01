@@ -33,6 +33,7 @@ const TrainerDashboard = () => {
     e.preventDefault();
     console.log(newTrainer);
     dispatch(addTrainer(newTrainer));
+    dispatch(fetchTrainers());
     setNewTrainer({ fullName: "", email: "", password: "", role: "" }); // Reset form fields
   };
 

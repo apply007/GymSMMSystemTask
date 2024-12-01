@@ -39,9 +39,11 @@ const AdminDashboard = () => {
   // };
 
   // Delete trainer
-  const handleDeleteTrainer = (id) => {
+  const handleDeleteTrainer = (e,id) => {
 console.log(id)
+e.preventDefault()
     dispatch(deleteTrainer(id));
+    dispatch(fetchTrainers());
   };
 
   // Add new class schedule
@@ -83,7 +85,7 @@ console.log(id)
               <li key={trainer._id} className="mb-2 font-semibold">
                 {trainer.fullName}{" "}
                 <button
-                  onClick={() => handleDeleteTrainer(trainer._id)}
+                  onClick={(e) => handleDeleteTrainer(e,trainer._id)}
                   className="text-red-500 ml-2"
                 >
                   Delete

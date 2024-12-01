@@ -32,9 +32,14 @@ useEffect(() => {
     const { role } = user.user; // Assuming `role` is part of the user object
     if (role === "admin") {
       navigate("/admin-dashboard");
-    } else if (role === "trainer") {
+    } 
+    else if (role === "trainer") {
       navigate("/trainer-dashboard");
-    } else {
+    }
+    else if (role === "trainee") {
+      navigate("/trainer-dashboard");
+    }
+     else {
       navigate("/"); // Default redirect (e.g., homepage)
     }
   }

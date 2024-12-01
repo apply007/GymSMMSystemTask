@@ -37,7 +37,7 @@ const addTrainer = async (req, res) => {
 // Delete Trainer Controller
 const deleteTrainer = async (req, res) => {
   const { id } = req.params; // Extract trainer ID from the route parameter
-console.log(id)
+
   try {
     // Find and delete the trainer
     const deletedTrainer = await User.findByIdAndDelete(id);
