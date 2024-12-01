@@ -16,7 +16,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/trainers', trainerRoutes);
 app.use('/api/schedules', scheduleRoutes);
 
-const __dirname=path.resolve()
+
 app.use(express.static(path.join(__dirname,'../frontend/dist')))
 
 app.get('*',(req,res)=>{
