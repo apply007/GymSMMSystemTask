@@ -23,7 +23,8 @@ const AdminDashboard = () => {
   const { trainers, classSchedules, loading, error } = useSelector(
     (state) => state.trainers
   );
-  console.log(classSchedules)
+  console.log("Trainers:", trainers);
+  console.log("ClassSchedules:", classSchedules);
 
   // Fetch trainers and schedules on component mount
   useEffect(() => {
@@ -152,7 +153,7 @@ e.preventDefault()
                   <td className="border border-gray-300 p-2">{schedule.date}</td>
                   <td className="border border-gray-300 p-2">{schedule.time}</td>
                   <td className="border border-gray-300 p-2">
-                    {trainers.find((t) => t._id === schedule.trainer)?.name}
+                    {trainers.find((t) => t._id === schedule.trainer._id)?.fullName}
                   </td>
                 </tr>
               ))}
