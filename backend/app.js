@@ -2,6 +2,7 @@ const express = require("express");
 const authRoutes = require("./routes/authRoutes");
 const trainerRoutes = require("./routes/trainerRoutes");
 const scheduleRoutes = require("./routes/scheduleRoutes");
+const  path = require("path");
 const  cors = require("cors");
 const app = express();
 // Configure CORS
@@ -14,4 +15,12 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/trainers', trainerRoutes);
 app.use('/api/schedules', scheduleRoutes);
+
+
+app.use(express.static(path.join(__dirname,'/frontend/dist')))
+
+app.get('*',(req,res)=>{
+  res.sendFile(path.join(__dirname,'frontend','dist','index.html'))
+})
+
 module.exports = app;

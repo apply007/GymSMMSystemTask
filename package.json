@@ -9,5 +9,18 @@
     "react-router-dom": "^7.0.1",
     "redux": "^5.0.1",
     "tailwindcss": "^3.4.15"
-  }
+  },
+  "name": "gymsmmsystemtask",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "nodemon backend/server.js",
+    "start": "node backend/server.js",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
