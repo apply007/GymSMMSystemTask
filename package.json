@@ -2,6 +2,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.4.0",
     "axios": "^1.7.8",
+    "dotenv": "^16.4.5",
     "jwt-decode": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -13,7 +14,6 @@
   "name": "gymsmmsystemtask",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "dev": "nodemon backend/server.js",
     "start": "node backend/server.js",
