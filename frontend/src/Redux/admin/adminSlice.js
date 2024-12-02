@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Define the base URL for the backend
-const BACKEND_URL = "https://gymsmmsystemtask.onrender.com//api"; // Replace with your deployed backend URL
+const BACKEND_URL = "https://gymsmmsystemtask.onrender.com/api"; // Replace with your deployed backend URL
 
 // Async thunk for fetching trainers
 export const fetchTrainers = createAsyncThunk(
