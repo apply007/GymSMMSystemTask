@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/auth";
+const API_URL = "https://gymsmmsystemtask.onrender.com/api/auth";
 
 // Async Thunks
 export const loginUser = createAsyncThunk("login", async (userData, thunkAPI) => {
