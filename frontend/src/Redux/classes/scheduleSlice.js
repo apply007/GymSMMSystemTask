@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/schedules";
+const API_URL = "http://localhost:3000/api/schedules";
 
 // Async Thunks
 export const fetchSchedules = createAsyncThunk("fetchSchedules", async (_, thunkAPI) => {
