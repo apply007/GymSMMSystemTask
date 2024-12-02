@@ -143,7 +143,7 @@ e.preventDefault()
               <tr>
                 <th className="border border-gray-300 p-2">Date</th>
                 <th className="border border-gray-300 p-2">Time</th>
-                <th className="border border-gray-300 p-2">Trainer</th>
+                {/* <th className="border border-gray-300 p-2">Trainer</th> */}
               </tr>
             </thead>
             <tbody>
@@ -152,9 +152,9 @@ e.preventDefault()
                 <tr key={schedule._id}>
                   <td className="border border-gray-300 p-2">{schedule.date}</td>
                   <td className="border border-gray-300 p-2">{schedule.time}</td>
-                  <td className="border border-gray-300 p-2">
+                  {/* <td className="border border-gray-300 p-2">
                     {trainers.find((t) => t._id === schedule.trainer._id)?.fullName}
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>
