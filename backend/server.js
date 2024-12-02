@@ -12,8 +12,8 @@ const app = require("./app");
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, (req, res) => {
+app.listen(5000, (req, res) => {
 
-  console.log("Server start Successfully at http://localhost:" + port);
+  console.log("Server now start Successfully at http://localhost:" + port);
 
 });
